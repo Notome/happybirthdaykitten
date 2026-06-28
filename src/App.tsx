@@ -36,12 +36,23 @@ const bgDecor = Array.from({ length: 36 }, (_, i) => {
   };
 });
 
+type ConfettiParticle = {
+  id: number;
+  x: number;
+  y: number;
+  tx: number;
+  ty: number;
+  rot: number;
+  color: string;
+  shape: string;
+};
+
 function App() {
-  const [confetti, setConfetti] = useState([]);
+  const [confetti, setConfetti] = useState<ConfettiParticle[]>([]);
   const idRef = useRef(0);
 
-  const handleClick = useCallback((e) => {
-    const burst = Array.from({ length: 28 }).map(() => {
+  const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const burst: ConfettiParticle[] = Array.from({ length: 28 }).map(() => {
       const angle = Math.random() * Math.PI * 2;
       const distance = 70 + Math.random() * 150;
       idRef.current += 1;
@@ -115,7 +126,7 @@ function App() {
             '--ty': `${p.ty}px`,
             '--rot': `${p.rot}deg`,
             animation: 'confetti-pop 0.9s ease-out forwards',
-          }}
+          } as React.CSSProperties}
         />
       ))}
 
@@ -127,7 +138,7 @@ function App() {
               alt="Гифка 1"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
-                const placeholder = e.currentTarget.nextElementSibling;
+                const placeholder = e.currentTarget.nextElementSibling as HTMLElement | null;
                 if (placeholder) placeholder.style.display = 'flex';
               }}
               className="w-36 h-36 sm:w-44 sm:h-44 lg:w-56 lg:h-56 object-cover rounded-2xl"
@@ -177,7 +188,7 @@ function App() {
               alt="Гифка 2"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
-                const placeholder = e.currentTarget.nextElementSibling;
+                const placeholder = e.currentTarget.nextElementSibling as HTMLElement | null;
                 if (placeholder) placeholder.style.display = 'flex';
               }}
               className="w-36 h-36 sm:w-44 sm:h-44 lg:w-56 lg:h-56 object-cover rounded-2xl"
@@ -195,7 +206,7 @@ function App() {
               alt="Танцующие коты"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
-                const placeholder = e.currentTarget.nextElementSibling;
+                const placeholder = e.currentTarget.nextElementSibling as HTMLElement | null;
                 if (placeholder) placeholder.style.display = 'flex';
               }}
               className="w-72 h-72 sm:w-[26rem] sm:h-[26rem] object-cover rounded-2xl"
