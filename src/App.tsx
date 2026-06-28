@@ -1,5 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 
+const BASE = import.meta.env.BASE_URL;
+
 const BIRTHDAY_NAME = 'Полиночкаааа';
 
 const photos = Array.from({ length: 23 }, (_, i) => i + 1);
@@ -134,7 +136,7 @@ function App() {
         <header className="px-4 sm:px-6 pt-12 sm:pt-20 pb-16 flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10">
           <div className="bg-white/70 border-4 border-pink-200 rounded-3xl p-3 shadow-lg shadow-pink-200 -rotate-3 shrink-0">
             <img
-              src="/1.gif"
+              src={`${BASE}1.gif`}
               alt="Гифка 1"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
@@ -184,7 +186,7 @@ function App() {
 
           <div className="bg-white/70 border-4 border-pink-200 rounded-3xl p-3 shadow-lg shadow-pink-200 rotate-3 shrink-0">
             <img
-              src="/2.gif"
+              src={`${BASE}2.gif`}
               alt="Гифка 2"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
@@ -202,7 +204,7 @@ function App() {
         <section className="flex flex-col sm:flex-row items-center justify-center gap-8 px-6 sm:px-10 pb-20">
           <div className="bg-white/70 border-4 border-pink-200 rounded-3xl p-4 shadow-lg shadow-pink-200 rotate-1">
             <img
-              src="/cats-dance.gif"
+              src={`${BASE}cats-dance.gif`}
               alt="Танцующие коты"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
@@ -220,7 +222,7 @@ function App() {
 
           <div className="bg-white/70 border-4 border-pink-200 rounded-3xl p-4 shadow-lg shadow-pink-200 -rotate-1">
             <video
-              src="/video1.MP4"
+              src={`${BASE}video1.MP4`}
               controls
               autoPlay
               loop
@@ -246,7 +248,7 @@ function App() {
                   style={{ backgroundColor: tapes[i % tapes.length] }}
                 />
                 <img
-                  src={`/photo${n}.jpg`}
+                  src={`${BASE}photo${n}.jpg`}
                   className="w-full h-full object-cover rounded-md shadow-md"
                 />
               </div>
